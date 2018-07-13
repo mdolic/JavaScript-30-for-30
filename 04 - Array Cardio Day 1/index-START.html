@@ -68,15 +68,26 @@
     // Sort the people alphabetically by last name
 
 // @@@ 18:45 minute mark
-    const alpha = people.sort(function(lastOne, nextOne){
-        const [alast,afirst] = lastOne.split(', ');
-        const [bLast, aFirst] = nextOne.split(', ');
+    const alpha = people.sort((lastOne, nextOne) =>{
+        const [aLast,aFirst] = lastOne.split(', ');
+        const [bLast, bFirst] = nextOne.split(', ');
+        return aLast > bLast ? 1:-1;
     });
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike',
+     'walk', 'car', 'van', 'car', 'truck'];
 
-  </script>
+      const transport = data.reduce(function(obj,carItem){
+        
+        if(!obj[carItem]){ //if there is no object car item
+          obj[carItem] = 0; //return 0
+        }
+        obj[carItem]++; //otherwise count the object car item
+        return obj; //return {car:amount,truck: amount,etc...}
+      }, {})
+        console.log(transport);
+</script>
 </body>
 </html>
